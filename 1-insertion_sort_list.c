@@ -34,3 +34,34 @@ void sortedInsert(listint_t **list, listint_t *newNode)
 	newNode->prev = current;
 	}
 }
+
+
+
+
+
+void insertion_sort_list(listint_t **list)
+{
+	/* Initialize 'sorted' - a sorted doubly linked list */
+	listint_t *sorted = NULL, *current = NULL;
+
+	if (list == NULL)
+		return;
+
+	current = *list;
+
+	while (current != NULL)
+	{
+		/* Store next for next iteration */
+		listint_t *next = current->next;
+
+		/* removing all the links so as to create 'current' */
+		current->prev = current->next = NULL;
+		/* insert current in 'sorted' doubly linked list */
+		sortedInsert(&sorted, current);
+		print_list(*list);
+
+		/* Update current */
+		current = next;
+	}
+	*list = sorted;
+}
