@@ -22,9 +22,8 @@ void swap(int *xp, int *yp)
 
 void bubble_sort(int *array, size_t size)
 {
+	size_t i, j;
 
-
-
-
-	return (0);
+	if (size == 0)
+		return;
 }
