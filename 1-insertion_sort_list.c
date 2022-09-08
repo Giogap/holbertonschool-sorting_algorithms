@@ -20,4 +20,17 @@ void sortedInsert(listint_t **list, listint_t *newNode)
 		newNode->next->prev = newNode;
 		*list = newNode;
 	}
+	else
+	{
+		current = *list;
+		while (current->next != NULL && current->next->n < newNode->n)
+			current = current->next;
+		newNode->next = current->next;
+		if (current->next != NULL)
+		{
+			newNode->next->prev = newNode;
+		}
+	current->next = newNode;
+	newNode->prev = current;
+	}
 }
