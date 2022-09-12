@@ -13,55 +13,59 @@ void swap(int *xp, int *yp)
 }
 
 /**
- * partition - check code
+ * quick_sort_aux - check code
+ * @array: array
+ * @low: value first
+ * @high: value last
+ * @size: size array
+ */
+
+void quick_sort_aux(int *array, int low, int high, size_t size)
+{
+	int j = low, i = low;
+	int pivote;
+
+	pivote = array[high];
+	if (low >= high)
+		return;
+
+	for (; i < high; i++)
+	{
+		if (array[i] <= pivote)
+		{
+			if (i != j)
+			{
+				/* Intercambiar  */
+				swap(&array[i], &array[j]);
+				j++;
+				print_array(array, size);
+			}
+			else
+				j++;
+		}
+	}
+	if (j != high)
+	{
+		swap(&array[j], &array[high]);
+		print_array(array, size);
+	}
+	quick_sort_aux(array, low, j - 1, size);
+	quick_sort_aux(array, j + 1, high, size);
+}
+
+
+/**
+ * quick_sort - check code
  * @array: array
  * @size: size array
  */
 
-int partition(int  *array, size_t size)
-{
-	int central;
-	size_t i = 0;
-	size_t j = size;
-
-	if (!array || size < 2)
-		return (0);
-
-	central = (i + j) / 2;
-/**
-	pivot = array[size - 1];
-
-	for (j = 0; j < size - 1; j++)
-	{
-		if (array[j] <= pivot)
-		{
-			i++;
-			if (i != j)
-			{
-				swap(&array[i], &array[j]);
-			}
-		}
-		print_array(array, size);
-	}
-	if (i + 1 != size - 1)
-	{
-		swap(&array[i + 1], &array[size - 1]);
-	}*/
-	return (i + 1);
-}
-/**
- * quick_sort - check code
- * @array: Array
- * @size: Size of array
- */
 void quick_sort(int *array, size_t size)
 {
-	size_t pivot;
+	size_t low = 0, high = size - 1;
 
-	if (!array || size < 2)
+	if (!array | !size)
 		return;
 
-	pivot = partition(array, size);
-	quick_sort(array, pivot);
-	quick_sort(array + pivot, size - pivot);
+	quick_sort_aux(array, low, high, size);
 }
