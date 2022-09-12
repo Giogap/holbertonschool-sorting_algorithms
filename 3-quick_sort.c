@@ -20,13 +20,15 @@ void swap(int *xp, int *yp)
 
 int partition(int  *array, size_t size)
 {
-	int pivot;
-	size_t i = -1;
-	size_t j;
+	int central;
+	size_t i = 0;
+	size_t j = size;
 
 	if (!array || size < 2)
 		return (0);
 
+	central = (i + j) / 2;
+/**
 	pivot = array[size - 1];
 
 	for (j = 0; j < size - 1; j++)
@@ -37,14 +39,14 @@ int partition(int  *array, size_t size)
 			if (i != j)
 			{
 				swap(&array[i], &array[j]);
-				print_array(array, size);
 			}
 		}
+		print_array(array, size);
 	}
 	if (i + 1 != size - 1)
 	{
 		swap(&array[i + 1], &array[size - 1]);
-	}
+	}*/
 	return (i + 1);
 }
 /**

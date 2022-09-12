@@ -2,11 +2,10 @@
 #include <time.h>
 
 /**
- *
- *
- *
+ * swap - check code
+ * @xp: array
+ * @yp: tamapo
  */
-
 void swap(int *xp, int *yp)
 {
 	int temp = *xp;
@@ -15,9 +14,9 @@ void swap(int *xp, int *yp)
 }
 
 /**
- *
- *
- *
+ * bubble_sort - check code
+ * @array: pointer array
+ * @size: pointer size
  */
 
 void bubble_sort(int *array, size_t size)
@@ -27,11 +26,11 @@ void bubble_sort(int *array, size_t size)
 	if (size == 0)
 		return;
 
-	for (i = 0; i < size - 1; i++)			/* n  */
+	for (i = 0; i < size - 1; i++)
 	{
-		for (j = 0; j < size; j++)	/* n^2 */
+		for (j = 0; j < size - i - 1; j++)
 		{
-			if (array[j] > array[j + 1])	/* n^2 */
+			if (array[j] > array[j + 1])
 			{
 				swap(&array[j], &array[j + 1]);
 				print_array(array, size);
